@@ -37,33 +37,34 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Articulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @Basic(optional = false)
     @NotNull
     @Column(name = "idarticulo")
     private Integer idarticulo;
-    @Basic(optional = false)
+    
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "codigo")
     private String codigo;
-    @Basic(optional = false)
+    
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "nombre")
     private String nombre;
+    
     @Size(max = 1024)
     @Column(name = "descripcion")
     private String descripcion;
+    
     @Lob
     @Column(name = "imagen")
     private byte[] imagen;
-    @Size(max = 45)
-    @Column(name = "articulocol")
-    private String articulocol;
+      
     @JoinColumn(name = "idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(optional = false)
     private Categoria idcategoria;
+    
     @JoinColumn(name = "idpresentacion", referencedColumnName = "idpresentacion")
     @ManyToOne(optional = false)
     private Presentacion idpresentacion;
@@ -121,14 +122,6 @@ public class Articulo implements Serializable {
         this.imagen = imagen;
     }
 
-    public String getArticulocol() {
-        return articulocol;
-    }
-
-    public void setArticulocol(String articulocol) {
-        this.articulocol = articulocol;
-    }
-
     public Categoria getIdcategoria() {
         return idcategoria;
     }
@@ -146,28 +139,10 @@ public class Articulo implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idarticulo != null ? idarticulo.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Articulo)) {
-            return false;
-        }
-        Articulo other = (Articulo) object;
-        if ((this.idarticulo == null && other.idarticulo != null) || (this.idarticulo != null && !this.idarticulo.equals(other.idarticulo))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "Entity.Articulo[ idarticulo=" + idarticulo + " ]";
+        return "Articulo{" + "idarticulo=" + idarticulo + ", codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", imagen=" + imagen + ", idcategoria=" + idcategoria + ", idpresentacion=" + idpresentacion + '}';
     }
+
+    
     
 }
